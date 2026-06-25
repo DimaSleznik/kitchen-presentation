@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kitchen Planner — обзор, план работ и архитектура</title>
+<!-- fonts self-hosted via @fontsource-variable (imported in src/main.js) — works offline -->
+<link rel="stylesheet" href="./src/style.css" />
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="brand" href="#/">Häcker · <b>Kitchen Planner</b></a>
+  <div class="links">
+    <a href="#/">Обзор</a>
+    <a href="#/migration">Миграция</a>
+    <a href="#/board">План работ</a>
+    <a href="#/arch">Как устроено</a>
+    <a href="#/docs">Документы</a>
+  </div>
+</div></nav>
+
+<!-- ════════ BOARD (План работ) ════════ -->
+<section id="board-view" hidden></section>
+
+<!-- ════════ ARCH (Как устроено) ════════ -->
+<section id="arch-view" hidden></section>
+
+<!-- ════════ DOCS INDEX (Документы) ════════ -->
+<section id="docs-view" hidden></section>
+
+<!-- ════════ MIGRATION (Миграция) ════════ -->
+<section id="migration-view" hidden></section>
+
+<!-- ════════ ОБЗОР (landing, ведём за руку) ════════ -->
+<main id="presentation" hidden>
+
+  <header class="hero"><div class="wrap reveal">
+    <div class="eyebrow">Обзор проекта · параметрический каталог кухонь · 2026</div>
+    <h1>Как сделать <em>тысячи кухонных модулей</em> — не рисуя тысячи файлов.</h1>
+    <p class="lede">Эта страница за 10 минут объясняет простыми словами: какую проблему решаем,
+      как устроено решение, что и в каком порядке делаем и что покажем заказчику на каждом шаге.</p>
+    <div class="thesis">Перестаём хранить <b>тысячи готовых файлов</b> и начинаем хранить
+      <b>десятки шаблонов + правила</b>. Конкретные шкафы — и каталожные товары, и кастом —
+      рождаются из них на лету.</div>
+    <div class="cta-row">
+      <a class="cta" href="#/board">Смотреть план работ →</a>
+      <a class="cta ghost" href="#/arch">Как это устроено</a>
+    </div>
+  </div></header>
+
+  <!-- 00 ORIENTATION -->
+  <section id="start"><div class="wrap">
+    <div class="sec-head reveal"><span class="num">00</span><h2>Что это и как смотреть</h2></div>
+    <p class="sub reveal">Три экрана, каждый отвечает на свой вопрос. Идите по шагам —
+      дальше всё кликабельно и раскрывается.</p>
+    <div class="tab-cards reveal">
+      <a class="tab-card" data-lane="board" href="#/board">
+        <span class="tc-step">шаг 1 · что делаем</span><h3>План работ</h3>
+        <p>Что делаем, в каком порядке, сколько займёт и что показываем заказчику на каждом этапе.</p>
+        <span class="tc-go">Открыть доску →</span></a>
+      <a class="tab-card" data-lane="arch" href="#/arch">
+        <span class="tc-step">шаг 2 · как устроено</span><h3>Как устроено</h3>
+        <p>Из каких частей собран продукт и как они связаны — наглядная карта без техножаргона.</p>
+        <span class="tc-go">Открыть карту →</span></a>
+      <a class="tab-card" data-lane="docs" href="#/docs">
+        <span class="tc-step">шаг 3 · подробности</span><h3>Документы</h3>
+        <p>Глубже: архитектура, сервисы, роль ИИ, зрелость и риски. Для тех, кто хочет копнуть.</p>
+        <span class="tc-go">Открыть документы →</span></a>
+    </div>
+    <div class="tip reveal"><span class="tip-i">i</span><div>Это <b>не приложение</b>, а презентация проекта:
+      объясняет идею простыми словами и картинками. Почти каждая карточка и блок —
+      <b>кликабельны</b> и раскрывают объяснение.</div></div>
+  </div></section>
+
+  <!-- 01 HÄCKER СЕЙЧАС -->
+  <section id="current"><div class="wrap">
+    <div class="sec-head reveal"><span class="num">01</span><h2>Как у Häcker всё устроено сегодня</h2></div>
+    <p class="sub reveal">Прежде чем переходить на новое — посмотрим, как Häcker работает сейчас.
+      Так станет понятно, что именно мы переносим и зачем. Весь путь — от каталога до станка на заводе.</p>
+    <div class="reveal" data-plate="hk-pipeline" data-caption="Схема · текущий пайплайн Häcker — от данных до завода"></div>
+    <div class="tip reveal"><span class="tip-i">i</span><div>Ниже — та же схема, но <b>живая</b>: наведи или кликни
+      на любой блок (IDM, imos, Navigram, ЧПУ, станки) — он расскажет, что это, зачем и что с ним будет при переходе.</div></div>
+    <div id="hk-pipeline-map" class="reveal pipe-host"></div>
+    <h3 class="mini-h reveal">Зачем нужен ЧПУ</h3>
+    <p class="sub reveal">Кухня — это не картинка: каждый настроенный шкаф превращается в реальные детали, которые
+      <b>станки режут, сверлят и кромят</b> по программам ЧПУ. Поэтому конфигуратор нельзя оторвать от завода —
+      данные о товаре в итоге должны дойти до станка без ошибок.</p>
+    <h3 class="mini-h reveal">В каких форматах лежат данные</h3>
+    <p class="sub reveal">Три вида файлов, которые мы получили от Häcker — и что каждый из них значит.</p>
+    <div class="grid g3 reveal" style="margin-top:8px">
+      <div class="card"><span class="tag" style="color:var(--blue)">каталог</span><h3>IDM&nbsp;XML</h3>
+        <p>Один большой текстовый файл-каталог в отраслевом формате IDM: все товары, цены, правила.
+          3D-форм и команд станкам внутри <b>нет</b>.</p></div>
+      <div class="card rec"><span class="tag">формы</span><h3>.nfx (imos)</h3>
+        <p>Формат редактора imos. Внутри не данные, а <b>мини-программа-рецепт</b>: «собери корпус,
+          поставь фасад и полки по размеру». Просто скопировать нельзя — надо пересобрать.</p></div>
+      <div class="card"><span class="tag" style="color:var(--accent-2)">конфигуратор</span><h3>JSON-выжимка</h3>
+        <p>Рядом — JSON-файлы: «переваренная» версия каталога под конкретный конфигуратор
+          (фичи, опции, цены, поиск).</p></div>
+    </div>
+    <details class="mig-tech reveal">
+      <summary>Показать, как выглядят файлы — для технарей</summary>
+      <ul>
+        <li><b>IDM&nbsp;XML</b> — <span class="kbd">&lt;T_NEW_CATALOG … IDM_3_0_1.xsd&gt;</span> →
+          <span class="kbd">&lt;ITEM&gt;&lt;TYPE_NO&gt;…&lt;/TYPE_NO&gt;</span>: корень-каталог, внутри товары с артикулом, фичами, ценами и правилами.</li>
+        <li><b>.nfx</b> — <span class="kbd">carcass=hold(carcassvent.nfx); usefront=subscribe(…); RESULT=configurator(cabinet,size,…)</span>:
+          параметрический «рецепт» сборки шкафа из редактора imos.</li>
+        <li><b>JSON</b> — <span class="kbd">featureList · optionMapping · priceDefinition · itemsSearchInfo</span>:
+          проекция IDM-каталога под конфигуратор (то, что мы детально разобрали в отчётах <span class="kbd">HK/_research/</span>).</li>
+      </ul>
+    </details>
+
+    <h3 class="mini-h reveal">Что из этого нужно перенести</h3>
+    <div class="grid g3 reveal" style="margin-top:8px">
+      <div class="card"><span class="tag" style="color:var(--blue)">оставляем</span><h3>Каталог (IDM)</h3>
+        <p>Товары, цены, правила. Это отраслевой стандарт — продолжаем отдавать дилерам через cat@web.</p></div>
+      <div class="card rec"><span class="tag">делаем своё</span><h3>Редактор и 3D</h3>
+        <p>Вместо imos — сборщик геометрии в браузере; вместо Navigram — своё хранилище 3D-моделей.</p></div>
+      <div class="card"><span class="tag" style="color:#a8331f">осторожно</span><h3>Команды станкам</h3>
+        <p>ЧПУ-программ нет в выгрузке — вынимаем из живого imos и сверяем 1-в-1. Делаем последними.</p></div>
+    </div>
+    <div class="cta-row reveal">
+      <a class="cta ghost" href="#/migration">Подробнее — вкладка «Миграция» →</a>
+    </div>
+  </div></section>
+
+  <!-- 02 PROBLEM -->
+  <section id="problem"><div class="wrap">
+    <div class="sec-head reveal"><span class="num">02</span><h2>Проблема: «отдельный файл на каждый шкаф» — тупик</h2></div>
+    <p class="sub reveal">Сегодня каталог — это жёстко прописанный список из <b>61 модуля</b>: на каждую
+      вариацию — свой готовый 3D-файл. Каждая «та же, но шире / дверь справа / другой цвет» = новый файл,
+      новое превью, новая строка в коде.</p>
+    <div class="reveal" data-plate="thesis" data-caption="Схема · один шаблон вместо тысяч готовых файлов"></div>
+    <p class="sub reveal" style="margin-top:30px">Файлами это физически нерисуемо: тысячи 3D-моделей,
+      ручной труд художника на каждую, гигабайты данных, рассинхрон с ценами — и <b>никакого кастома</b>,
+      который Häcker разрешает заказчику.</p>
+  </div></section>
+
+  <!-- 02 SOLUTION -->
+  <section id="solution"><div class="wrap">
+    <div class="sec-head reveal"><span class="num">03</span><h2>Решение: гибрид — корпус собираем, детали берём готовые</h2></div>
+    <p class="sub reveal">Из трёх путей — «как сейчас» (готовый файл на каждый товар), «всё рисует программа»
+      и «гибрид» — выбираем <b>гибрид</b>: он даёт масштаб программы и качество готовой детали. Так
+      работают и индустриальные стандарты (2020, Winner, IKEA METOD).</p>
+    <div class="reveal" data-plate="hybrid" data-caption="Схема · масштаб как у программы, качество как у готовой детали"></div>
+    <div class="grid g3 reveal" style="margin-top:26px">
+      <div class="card"><span class="tag">как сейчас</span><h3>Файл на каждый товар</h3>
+        <ul><li class="pro">Фотокачество, контроль художника</li>
+        <li class="con">Тысячи файлов — не масштабируется</li><li class="con">Нет кастома</li></ul></div>
+      <div class="card"><span class="tag">другая крайность</span><h3>Всё рисует программа</h3>
+        <ul><li class="pro">Бесконечные вариации даром</li><li class="pro">Любой размер</li>
+        <li class="con">Сложно добиться фотодеталей</li></ul></div>
+      <div class="card rec"><span class="tag">выбираем · гибрид</span><h3>Шаблоны + готовые детали</h3>
+        <ul><li class="pro">Корпус собираем по размеру</li><li class="pro">Фасад/ручку берём готовыми</li>
+        <li class="pro">Товар = пресет, кастом = тот же шаблон</li></ul></div>
+    </div>
+  </div></section>
+
+  <!-- 03 DATA -->
+  <section id="data"><div class="wrap">
+    <div class="sec-head reveal"><span class="num">04</span><h2>Данные — три слоя, связанные артикулом</h2></div>
+    <p class="sub reveal">Чтобы и геометрия, и цена, и правила не разъезжались, данные разложены на три
+      слоя — как в индустриальных стандартах. Один артикул — одна и та же вещь во всех трёх.</p>
+    <div class="reveal" data-plate="three-layers" data-caption="Схема · геометрия · коммерция · правила"></div>
+    <p class="sub reveal" style="margin-top:30px"><b>Миграция не ломает всё:</b> сегодняшний «файл на товар»
+      становится частным случаем шаблона. Двигаемся семействами, начиная с нижних шкафов.
+      <br>Как переносим реальные данные Häcker (IDM · imos · Navigram) — на вкладке
+      <a href="#/migration">«Миграция»</a>.</p>
+  </div></section>
+
+  <!-- 04 AI -->
+  <section id="ai"><div class="wrap">
+    <div class="sec-head reveal"><span class="num">05</span><h2>Где помогает искусственный интеллект</h2></div>
+    <p class="sub reveal">Главный принцип: <b>правила — источник истины, ИИ — ускоритель сверху</b>, а не замена.
+      ИИ заполняет параметры известных шаблонов, но не выдумывает геометрию сам.</p>
+    <div class="reveal" data-plate="ai-roles" data-caption="Схема · три роли ИИ под контролем правил"></div>
+  </div></section>
+
+  <!-- 05 MATURITY -->
+  <section id="maturity"><div class="wrap">
+    <div class="sec-head reveal"><span class="num">06</span><h2>Зрелость кода и риски — честно и простыми словами</h2></div>
+    <p class="sub reveal">Прототип уже работает, но это <b>референс, а не фундамент</b>. Вот где код сейчас
+      нуждается в укреплении и как мы это снимаем — без отдельного «месяца на долги», прямо по ходу фаз.</p>
+    <div class="reveal" data-plate="maturity" data-caption="Схема · риски на бизнес-языке и как мы их снимаем"></div>
+  </div></section>
+
+  <!-- 06 ROADMAP -->
+  <section id="roadmap" style="border-bottom:none"><div class="wrap">
+    <div class="sec-head reveal"><span class="num">07</span><h2>Сроки — крупными мазками</h2></div>
+    <p class="sub reveal">До полного параметрического каталога — <b>примерно 11–16 недель</b> силами одного
+      разработчика. Детальный план по ролям и зависимостям — на доске «План работ».</p>
+    <figure class="fig reveal">
+      <svg viewBox="0 0 900 320" role="img" aria-label="Порядок и сроки фаз">
+        <g font-family="JetBrains Mono Variable" font-size="12">
+          <text x="0" y="44" fill="#564f43">Фундамент</text>
+          <text x="0" y="86" fill="#564f43">Движок шаблонов</text>
+          <text x="0" y="128" fill="#564f43">Живой шкаф (демо)</text>
+          <text x="0" y="170" fill="#564f43">Каталог + ИИ (демо)</text>
+          <text x="0" y="212" fill="#564f43">Полный каталог</text>
+          <text x="0" y="254" fill="#564f43">ИИ-контент</text>
+        </g>
+        <line x1="190" y1="280" x2="880" y2="280" class="svg-l"/>
+        <g font-family="JetBrains Mono Variable" font-size="10" fill="#8a8270">
+          <text x="190" y="298">старт</text><text x="400" y="298">нед 6</text>
+          <text x="600" y="298">нед 11</text><text x="838" y="298">нед 17</text>
+        </g>
+        <g>
+          <rect x="190" y="30" width="120" height="22" rx="3" class="bar acc"/>
+          <rect x="270" y="72" width="86" height="22" rx="3" class="bar"/>
+          <rect x="356" y="114" width="120" height="22" rx="3" class="bar acc"/>
+          <rect x="476" y="156" width="124" height="22" rx="3" class="bar"/>
+          <rect x="600" y="198" width="166" height="22" rx="3" class="bar acc"/>
+          <rect x="766" y="240" width="114" height="22" rx="3" class="bar"/>
+        </g>
+        <text x="360" y="128" class="svg-tb" fill="#fff" font-size="11">★ первое «вживую» для демо</text>
+      </svg>
+      <figcaption>Схема · порядок фаз (условные недели, 1 разработчик) · ★ — что показываем заказчику</figcaption>
+    </figure>
+    <div class="cta-row reveal">
+      <a class="cta" href="#/board">Открыть детальный план работ →</a>
+      <a class="cta ghost" href="#/docs">Все документы</a>
+    </div>
+  </div></section>
+
+</main>
+
+<!-- ════════ DOC READER ════════ -->
+<article id="doc-view" hidden><div class="wrap">
+  <a class="back" href="#/docs">← к документам</a>
+  <div id="doc-content" class="markdown"></div>
+</div></article>
+
+<footer><div class="wrap">
+  <b>Kitchen Planner</b> · обзор проекта параметрического каталога · самодостаточная презентация
+  для GitHub Pages. Технический прототип-референс и оригиналы документов — в проекте <span class="kbd">Kitchen/</span>.
+</div></footer>
+
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>

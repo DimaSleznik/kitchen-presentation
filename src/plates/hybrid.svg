@@ -1,0 +1,101 @@
+<svg viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d">
+  <title id="t">Гибрид: корпус собираем, детали берём готовые</title>
+  <desc id="d">Корпус шкафа строим процедурно из панелей по размеру, а внешние детали — фасад, ручку, петлю — берём готовыми из библиотеки 3D-моделей GLB; на выходе один готовый шкаф.</desc>
+  <style>
+    .panel{fill:#f6f0e4}
+    .frame{fill:none;stroke:#b3502a;stroke-width:3}
+    .frameIn{fill:none;stroke:#d8c3a0;stroke-width:1}
+    .ttl{font-family:Georgia,'Times New Roman',serif;fill:#1d1a15;font-weight:700}
+    .sub{font-family:'Segoe UI',system-ui,sans-serif;fill:#564f43}
+    .lab{font-family:'Segoe UI',sans-serif;fill:#564f43;font-weight:700}
+
+    .selfBox{fill:#f3e0d2;stroke:#b3502a;stroke-width:2}
+    .selfT{font-family:Georgia,serif;fill:#1d1a15;font-weight:700}
+    .selfL{font-family:'Segoe UI',sans-serif;fill:#6b4a36}
+    .panelP{fill:#f6f0e4;stroke:#b3502a;stroke-width:2}
+
+    .asset{fill:#e7ddc9;stroke:#a99873;stroke-width:1.6}
+    .assetT{font-family:'Segoe UI',sans-serif;fill:#7a6f5b;font-weight:600}
+    .assetL{font-family:'Segoe UI',sans-serif;fill:#7a6f5b}
+
+    .done{fill:#d5e8d4;stroke:#4f8a52;stroke-width:2.2}
+    .doneT{font-family:Georgia,serif;fill:#27502a;font-weight:700}
+    .doneL{font-family:'Segoe UI',sans-serif;fill:#27502a}
+
+    .lead{stroke:#8a7a5c;stroke-width:2.4;fill:none}
+    .plus{font-family:Georgia,serif;fill:#b3502a;font-weight:700}
+    .leg{font-family:'Segoe UI',sans-serif;fill:#6b5f4d}
+  </style>
+
+  <rect class="panel" x="8" y="8" width="784" height="364" rx="14"/>
+  <rect class="frame" x="8" y="8" width="784" height="364" rx="14"/>
+  <rect class="frameIn" x="14" y="14" width="772" height="352" rx="10"/>
+
+  <text class="ttl" x="400" y="46" font-size="22" text-anchor="middle">Гибрид: корпус собираем, детали берём готовые</text>
+  <text class="sub" x="400" y="68" font-size="13" text-anchor="middle">масштаб как у процедуры, качество как у готовой детали</text>
+
+  <!-- ЛЕВО: Корпус (акцент, собираем сами) -->
+  <rect class="selfBox" x="40" y="104" width="190" height="200" rx="12"/>
+  <text class="selfT" x="135" y="130" font-size="16" text-anchor="middle">Корпус</text>
+
+  <!-- каркас шкафа из панелей: бок, бок, дно, верх, полка -->
+  <!-- внешняя коробка корпуса -->
+  <rect class="panelP" x="74" y="148" width="122" height="118" rx="4"/>
+  <!-- верх -->
+  <rect x="74" y="148" width="122" height="14" rx="3" fill="#f3e0d2" stroke="#b3502a" stroke-width="1.6"/>
+  <!-- дно -->
+  <rect x="74" y="252" width="122" height="14" rx="3" fill="#f3e0d2" stroke="#b3502a" stroke-width="1.6"/>
+  <!-- бок левый -->
+  <rect x="74" y="162" width="14" height="90" rx="3" fill="#f3e0d2" stroke="#b3502a" stroke-width="1.6"/>
+  <!-- бок правый -->
+  <rect x="182" y="162" width="14" height="90" rx="3" fill="#f3e0d2" stroke="#b3502a" stroke-width="1.6"/>
+  <!-- полка -->
+  <rect x="88" y="203" width="94" height="12" rx="2" fill="#f3e0d2" stroke="#b3502a" stroke-width="1.4"/>
+
+  <text class="selfL" x="135" y="290" font-size="12" text-anchor="middle" textLength="170" lengthAdjust="spacingAndGlyphs">строим из панелей по размеру</text>
+
+  <!-- ЦЕНТР: плюс -->
+  <text class="plus" x="270" y="200" font-size="56" text-anchor="middle">+</text>
+
+  <!-- ПРАВО-СВЕРХУ: Библиотека деталей (ассет, готовые) -->
+  <text class="lab" x="430" y="118" font-size="14" text-anchor="middle">Библиотека деталей</text>
+
+  <rect class="asset" x="316" y="132" width="100" height="40" rx="9"/>
+  <text class="assetT" x="366" y="157" font-size="13.5" text-anchor="middle">фасад</text>
+
+  <rect class="asset" x="316" y="180" width="100" height="40" rx="9"/>
+  <text class="assetT" x="366" y="205" font-size="13.5" text-anchor="middle">ручка</text>
+
+  <rect class="asset" x="316" y="228" width="100" height="40" rx="9"/>
+  <text class="assetT" x="366" y="253" font-size="13.5" text-anchor="middle">петля</text>
+
+  <text class="assetL" x="366" y="288" font-size="12" text-anchor="middle">берём готовыми (GLB)</text>
+
+  <!-- СТРЕЛКИ сходятся к итогу -->
+  <!-- от корпуса: вниз сразу, затем вправо ниже всех чипов и подписи -->
+  <path class="lead" d="M230 268 C 320 300, 360 314, 470 314 L 596 290"/>
+  <path d="M596 290 l-9 -9 l-2 11 z" fill="#8a7a5c"/>
+  <!-- от деталей: вверх и вправо -->
+  <path class="lead" d="M416 200 C 500 200, 500 124, 596 124"/>
+  <path d="M596 124 l-13 -5 l3 10 z" fill="#8a7a5c"/>
+
+  <!-- ИТОГ: Готовый шкаф (зелёный/готово) -->
+  <rect class="done" x="606" y="150" width="150" height="120" rx="12"/>
+  <text class="doneT" x="681" y="186" font-size="17" text-anchor="middle">Готовый</text>
+  <text class="doneT" x="681" y="208" font-size="17" text-anchor="middle">шкаф</text>
+  <!-- маленькая галочка-готово -->
+  <path d="M652 234 l11 12 l24 -26" fill="none" stroke="#4f8a52" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text class="doneL" x="700" y="240" font-size="12" text-anchor="middle">готово</text>
+
+  <!-- подписи на стрелках с halo -->
+  <rect x="500" y="300" width="62" height="20" rx="6" fill="#f6f0e4"/>
+  <text class="sub" x="531" y="315" font-size="12" text-anchor="middle" font-weight="700">корпус</text>
+  <rect x="486" y="146" width="62" height="20" rx="6" fill="#f6f0e4"/>
+  <text class="sub" x="517" y="161" font-size="12" text-anchor="middle" font-weight="700">детали</text>
+
+  <!-- ЛЕГЕНДА -->
+  <rect x="60" y="338" width="14" height="14" rx="3" fill="#f3e0d2" stroke="#b3502a" stroke-width="2"/>
+  <text class="leg" x="82" y="350" font-size="12">собираем сами</text>
+  <rect x="240" y="338" width="14" height="14" rx="3" fill="#e7ddc9" stroke="#a99873" stroke-width="1.6"/>
+  <text class="leg" x="262" y="350" font-size="12">готовая деталь GLB</text>
+</svg>

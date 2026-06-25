@@ -1,0 +1,87 @@
+<svg viewBox="0 0 760 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d">
+  <title id="t">Перенос без потерь — это сверка, а не обещание</title>
+  <desc id="d">Старую и новую систему запускаем рядом и сверяем результат один в один: считаем все товары, гоняем заказы параллельно и переключаемся по частям обратимо.</desc>
+  <style>
+    .panel{fill:#f6f0e4}
+    .frame{fill:none;stroke:#b3502a;stroke-width:3}
+    .frameIn{fill:none;stroke:#d8c3a0;stroke-width:1}
+    .ttl{font-family:Georgia,'Times New Roman',serif;fill:#1d1a15;font-weight:700}
+    .sub{font-family:'Segoe UI',system-ui,sans-serif;fill:#564f43}
+    .old{fill:#e7ddc9;stroke:#8a8270;stroke-width:1.8}
+    .oldT{font-family:Georgia,serif;fill:#4a4536;font-weight:700}
+    .oldL{font-family:'Segoe UI',sans-serif;fill:#6b6552}
+    .new{fill:#d8e6e6;stroke:#266b72;stroke-width:1.8}
+    .newT{font-family:Georgia,serif;fill:#15454a;font-weight:700}
+    .newL{font-family:'Segoe UI',sans-serif;fill:#1c5258}
+    .lead{fill:none;stroke:#8a8270;stroke-width:2.4}
+    .numC{fill:#f6f0e4;stroke:#b3502a;stroke-width:1.8}
+    .num{font-family:Georgia,serif;fill:#b3502a;font-weight:700}
+    .stepT{font-family:'Segoe UI',sans-serif;fill:#1d1a15}
+    .foot{font-family:'Segoe UI',sans-serif;fill:#564f43}
+  </style>
+
+  <rect class="panel" x="8" y="8" width="744" height="364" rx="14"/>
+  <rect class="frame" x="8" y="8" width="744" height="364" rx="14"/>
+  <rect class="frameIn" x="14" y="14" width="732" height="352" rx="10"/>
+
+  <text class="ttl" x="380" y="46" font-size="22" text-anchor="middle">Перенос без потерь — это сверка, а не обещание</text>
+
+  <!-- ====== ЦЕНТРАЛЬНАЯ СЦЕНА: Старое vs Новое → сверка ====== -->
+
+  <!-- СТАРОЕ (слева, нейтральное) -->
+  <rect class="old" x="58" y="98" width="172" height="92" rx="12"/>
+  <text class="oldT" x="144" y="138" font-size="18" text-anchor="middle">Старое</text>
+  <text class="oldL" x="144" y="162" font-size="12.5" text-anchor="middle">текущая система</text>
+
+  <!-- НОВОЕ (справа, бирюза) -->
+  <rect class="new" x="530" y="98" width="172" height="92" rx="12"/>
+  <text class="newT" x="616" y="138" font-size="18" text-anchor="middle">Новое</text>
+  <text class="newL" x="616" y="162" font-size="12.5" text-anchor="middle">целевая система</text>
+
+  <!-- стрелки из обоих блоков к сверке -->
+  <path class="lead" d="M230 144 L342 144"/>
+  <path d="M342 144 l-13 -5 l3 10 z" fill="#8a8270"/>
+  <path class="lead" d="M530 144 L418 144"/>
+  <path d="M418 144 l13 -5 l-3 10 z" fill="#8a8270"/>
+
+  <!-- СВЕРКА: знак равенства + лупа, бейдж «1-в-1» -->
+  <circle cx="380" cy="144" r="52" fill="#f3e0d2" stroke="#b3502a" stroke-width="2.4"/>
+  <!-- знак равенства -->
+  <line x1="356" y1="134" x2="404" y2="134" stroke="#b3502a" stroke-width="5" stroke-linecap="round"/>
+  <line x1="356" y1="152" x2="404" y2="152" stroke="#b3502a" stroke-width="5" stroke-linecap="round"/>
+  <!-- лупа -->
+  <circle cx="398" cy="160" r="16" fill="none" stroke="#1d1a15" stroke-width="3"/>
+  <line x1="409" y1="171" x2="423" y2="185" stroke="#1d1a15" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- бейдж 1-в-1 -->
+  <rect x="346" y="204" width="68" height="26" rx="13" fill="#b3502a"/>
+  <text x="380" y="222" font-size="14" text-anchor="middle" font-family="'Segoe UI',sans-serif" fill="#f6f0e4" font-weight="700">1-в-1</text>
+
+  <!-- подписи у блоков сверху -->
+  <text class="sub" x="380" y="86" font-size="12.5" text-anchor="middle" font-weight="700">сверяем результат</text>
+
+  <!-- ====== ТРИ ШАГА В РЯД ====== -->
+  <!-- шаг 1 -->
+  <circle class="numC" cx="58" cy="268" r="16"/>
+  <text class="num" x="58" y="274" font-size="17" text-anchor="middle">1</text>
+  <text class="stepT" x="82" y="263" font-size="12.5">Считаем всё — 10 234 товара,</text>
+  <text class="stepT" x="82" y="280" font-size="12.5">ничего не теряем</text>
+
+  <!-- шаг 2 -->
+  <circle class="numC" cx="290" cy="268" r="16"/>
+  <text class="num" x="290" y="274" font-size="17" text-anchor="middle">2</text>
+  <text class="stepT" x="314" y="263" font-size="12.5">Гоняем старые и новые</text>
+  <text class="stepT" x="314" y="280" font-size="12.5">заказы рядом и сверяем</text>
+
+  <!-- шаг 3 -->
+  <circle class="numC" cx="522" cy="268" r="16"/>
+  <text class="num" x="522" y="274" font-size="17" text-anchor="middle">3</text>
+  <text class="stepT" x="546" y="263" font-size="12.5">Переключаем по частям</text>
+  <text class="stepT" x="546" y="280" font-size="12.5">и обратимо</text>
+
+  <!-- разделитель над футером -->
+  <line x1="58" y1="318" x2="702" y2="318" stroke="#d8c3a0" stroke-width="1"/>
+
+  <!-- ФУТЕР -->
+  <text class="foot" x="380" y="344" font-size="13.5" text-anchor="middle">сначала данные · станки — последними</text>
+</svg>

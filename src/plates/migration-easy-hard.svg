@@ -1,0 +1,78 @@
+<svg viewBox="0 0 760 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d">
+  <title id="t">Что переносится легко, а что — тяжело</title>
+  <desc id="d">Каталог, цены и правила переносятся легко и сходятся по артикулу почти стопроцентно, а 3D-формы и команды для станков переносятся тяжело; общий ключ — артикул.</desc>
+  <style>
+    .panel{fill:#f6f0e4}
+    .frame{fill:none;stroke:#b3502a;stroke-width:3}
+    .frameIn{fill:none;stroke:#d8c3a0;stroke-width:1}
+    .ttl{font-family:Georgia,'Times New Roman',serif;fill:#1d1a15;font-weight:700}
+    .sub{font-family:'Segoe UI',system-ui,sans-serif;fill:#564f43}
+
+    .safeHdr{fill:#266b72;stroke:#1d4f54;stroke-width:1.4}
+    .hardHdr{fill:#b3502a;stroke:#8c3d1f;stroke-width:1.4}
+    .hdrTxt{font-family:Georgia,serif;fill:#f6f0e4;font-weight:700}
+    .hdrMark{font-family:'Segoe UI',sans-serif;fill:#f6f0e4;font-weight:700}
+
+    .safe{fill:#d8e6e6;stroke:#266b72;stroke-width:1.8}
+    .hard{fill:#f1d3c9;stroke:#b5503e;stroke-width:1.8}
+    .safeT{font-family:'Segoe UI',sans-serif;fill:#15454a;font-weight:600}
+    .hardT{font-family:'Segoe UI',sans-serif;fill:#732c20;font-weight:600}
+
+    .noteSafe{font-family:'Segoe UI',sans-serif;fill:#266b72;font-style:italic}
+    .noteHard{font-family:'Segoe UI',sans-serif;fill:#8c3d1f;font-style:italic}
+
+    .spine{fill:#f6f0e4;stroke:#8a7a5c;stroke-width:1.8}
+    .spineTxt{font-family:'Segoe UI',sans-serif;fill:#1d1a15;font-weight:700}
+    .foot{font-family:'Segoe UI',sans-serif;fill:#564f43}
+  </style>
+
+  <rect class="panel" x="8" y="8" width="744" height="384" rx="14"/>
+  <rect class="frame" x="8" y="8" width="744" height="384" rx="14"/>
+  <rect class="frameIn" x="14" y="14" width="732" height="372" rx="10"/>
+
+  <text class="ttl" x="380" y="48" font-size="22" text-anchor="middle">Что переносится легко, а что — тяжело</text>
+  <text class="sub" x="380" y="70" font-size="13" text-anchor="middle">один артикул связывает обе стороны</text>
+
+  <!-- ===== ЛЕВО: ЛЕГКО ===== -->
+  <rect class="safeHdr" x="40" y="92" width="300" height="42" rx="10"/>
+  <text class="hdrMark" x="64" y="120" font-size="20" text-anchor="middle">✓</text>
+  <text class="hdrTxt" x="196" y="120" font-size="19" text-anchor="middle">ЛЕГКО</text>
+
+  <rect class="safe" x="40" y="146" width="300" height="40" rx="9"/>
+  <text class="safeT" x="56" y="166" font-size="13.5">Каталог</text>
+  <text class="sub" x="56" y="180" font-size="11.5">10 234 товара</text>
+
+  <rect class="safe" x="40" y="194" width="300" height="36" rx="9"/>
+  <text class="safeT" x="56" y="217" font-size="13.5">Цены</text>
+
+  <rect class="safe" x="40" y="238" width="300" height="40" rx="9"/>
+  <text class="safeT" x="56" y="258" font-size="13.5">Правила</text>
+  <text class="sub" x="56" y="272" font-size="11.5">размеры, совместимость</text>
+
+  <text class="noteSafe" x="40" y="300" font-size="11.5">у каждого товара чистый номер-артикул —</text>
+  <text class="noteSafe" x="40" y="316" font-size="11.5">сходится на 99.9%</text>
+
+  <!-- ===== ПРАВО: ТЯЖЕЛО ===== -->
+  <rect class="hardHdr" x="420" y="92" width="300" height="42" rx="10"/>
+  <text class="hdrMark" x="444" y="120" font-size="19" text-anchor="middle">⚠</text>
+  <text class="hdrTxt" x="576" y="120" font-size="19" text-anchor="middle">ТЯЖЕЛО</text>
+
+  <rect class="hard" x="420" y="146" width="300" height="58" rx="9"/>
+  <text class="hardT" x="436" y="180" font-size="13.5">3D-формы шкафов</text>
+
+  <rect class="hard" x="420" y="212" width="300" height="66" rx="9"/>
+  <text class="hardT" x="436" y="240" font-size="13.5">Команды для станков</text>
+  <text class="noteHard" x="436" y="258" font-size="11.5">для станков с ЧПУ</text>
+
+  <text class="noteHard" x="420" y="300" font-size="11.5">логика спрятана в старом редакторе;</text>
+  <text class="noteHard" x="420" y="316" font-size="11.5">команд станков в выгрузке нет</text>
+
+  <!-- ===== ЦЕНТР: артикул — общий ключ ===== -->
+  <rect class="spine" x="364" y="146" width="32" height="132" rx="16"/>
+  <text class="spineTxt" x="380" y="212" font-size="13" text-anchor="middle"
+        transform="rotate(90 380 212)" textLength="118" lengthAdjust="spacingAndGlyphs">артикул — общий ключ</text>
+
+  <!-- ===== ПОДВАЛ ===== -->
+  <line x1="40" y1="344" x2="720" y2="344" stroke="#d8c3a0" stroke-width="1"/>
+  <text class="foot" x="380" y="368" font-size="13" text-anchor="middle">данные делаем первыми · станки — последними, после сверки</text>
+</svg>

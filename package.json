@@ -1,0 +1,23 @@
+{
+  "name": "kitchen-presentation",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0"
+  },
+  "dependencies": {
+    "@fontsource-variable/fraunces": "^5.2.9",
+    "@fontsource-variable/hanken-grotesk": "^5.2.8",
+    "@fontsource-variable/jetbrains-mono": "^5.2.8",
+    "highlight.js": "^11.10.0",
+    "marked": "^14.1.0",
+    "mermaid": "^11.4.0",
+    "panzoom": "^9.4.4"
+  }
+}

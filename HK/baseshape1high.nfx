@@ -1,0 +1,50 @@
+myemptyspace=emptyspace();
+carcass=hold(carcassvent.nfx);
+base=hold(base4feet.nfx);
+useinterior=subscribe(interiorhigh,carcassvent_interior.object);
+usefront=subscribe(unifrontlist,carcassvent_frontpanels.object);
+
+bodyfinish=subscribe(default|1|1|15071483|general_glossy,carcassvent_finbody.fin,interiorhigh_fin1.fin,interiorhighauto_fin1.fin,interiortandem_fin1.fin,interiortandemduo_fin1.fin,interiorshoes_fin1.fin,interiorcrates_fin1.fin,interiorbroom_fin1.fin,interiorwardrobe_fin1.fin,interiorordersystem_fin1.fin);
+interiorwhite=subscribe(1,carcassvent_leftsidepanelinterior.interiorwhite,carcassvent_rightsidepanelinterior.interiorwhite,carcassvent_bottompanelinterior.interiorwhite,carcassvent_toppanelinterior.interiorwhite,carcassvent_backpanel.interiorwhite,interiorhigh_shelf.interiorwhite, interiorhighauto_shelf.interiorwhite, interiorwardrobe_myshelf.interiorwhite, interiorbroom_myshelf.interiorwhite, interiorwardrobe_myshelf.interiorwhite, interiorwardrobe_mysplit.interiorwhite,interiortandem_mydivider.interiorwhite,interiortandemduo_mydivider.interiorwhite,interiorcrates_myshelf.interiorwhite,interiorshoes_myshelf.interiorwhite,interiorordersystem_myshelf.interiorwhite,interiorordersystem_innersidepanel.interiorwhite);
+finhdffinish=subscribe(default|1|1|16054520|general_glossy,carcassvent_finhdf.fin);
+
+visibleside=subscribe(0,carcassvent_leftsidepanelexterior.visibleside,carcassvent_rightsidepanelexterior.visibleside,gearchannelhandlec_myshape1.visibleside,gearchannelhandlel_myshape1.visibleside);
+sidefinish=subscribe(default|1|1|15071483|general_glossy,carcassvent_finside.fin);
+channelfinish=subscribe(geburstet3|0.1|0.1|16777215|metal_steel,gearchannelhandlel_fin1.fin,gearchannelhandlec_fin1.fin);
+
+shiftedsupport=position(base, 0,0, 0,0, 0,-100);
+support=size(shiftedsupport,0.6,0.56,0.1,1);
+
+cabinet=combine(support,carcass);
+
+b=subscribe(0.6,mysetsize.xs,support.xs,carcassvent_frontsize.xs);
+t=subscribe(0.56,mysetsize.ys,support.ys,drawerbox_usedrawer.t);
+h=subscribe(2.035,mysetsize.zs,carcassvent_frontsize.zs);
+DRAWCODE=xif(label(\"has_surcharge\",c()),\"xdo(xif(and(not(comparetext(textatt(\\\"prpval\\\",c()),\\\"0\\\")),\\\"equal(content(rank(2,componentatom(c()))),0)\\\"),\\\"xdo(settextatt(\\\\\\\"prpval\\\\\\\",0,c()),SETlabel(0,\\\\\\\"has_surcharge\\\\\\\",c()),sm(componentatom(c())))\\\"))\");
+frontoffset=subscribe(0,baseshape1high_legheight.frontoffset, unifront_myheight.selfadjustable);
+DRAWCODE=xif(or(unequal(genatt(2,c()),label(\"prpval\",c())),\"unequal(label(\\\"frontoffset\\\",c()),label(\\\"prevfrontoffset\\\",c()))\"),\"xdo(setcs(atombyname(\\\"acarcassvent_frontoffset\\\",componentatom(c()),1)),settextatt(\\\"dz1\\\",xif(label(\\\"frontoffset\\\",c()),\\\"concat(\\\\\\\"-\\\\\\\",string(sub(genatt(2,c()),0.01),0,3))\\\",\\\"\\\\\\\"0\\\\\\\"\\\"),cs()),sm(cs()),setcs(atombyname(\\\"aunifrontlist_unifrontlist\\\",up(c()),1)),setlabel(\\\"refresh\\\",1,cs()),sm(componentatom(c())),SETlabel(genatt(2,c()),\\\"prpval\\\",c()),SETlabel(label(\\\"frontoffset\\\",c()),\\\"prevfrontoffset\\\",c()))\");
+legheight=subscribe(0.1, support.zs, unifront_myheight.legheight);
+
+shelfcnt1=subscribe(0, interiorhigh_shelf.shelfcnt1, interiorhighauto_shelf.shelfcnt1, interiorcrates_mywireshelf.shelfcnt1, interiorshoes_myshelf.shelfcnt1, interiorlaundry_myshelf.shelfcnt1, interiorwardrobe_myshelf.shelfcnt1, interiorbroom_myshelf.shelfcnt1,interiorordersystem_shelf.shelfcnt1);
+shelfcnt2=subscribe(0, interiorhigh_shelf.shelfcnt2, interiorhighauto_shelf.shelfcnt2, interiorcrates_myshelf.shelfcnt2, interiorshoes_mywireshelf.shelfcnt2, interiorwardrobe_myshelf.shelfcnt2, interiorbroom_myshelf.shelfcnt2);
+divider1=subscribe(0, interiorhigh_shelf.div1, interiorhighauto_shelf.div1, interiorcrates_mywireshelf.div1, interiortandemduo_mydivider.div1, interiorcrates_myshelf.div1, interiorshoes_mywireshelf.div1, interiorshoes_myshelf.div1, interiorlaundry_myshelf.div1, interiorwardrobe_myshelf.div1, interiorbroom_myshelf.div1,interiorordersystem_shelf.div1);
+divider2=subscribe(0, interiorhigh_shelf.div2, interiortandem_mydivider.div2, interiortandemduo_mydivider.div2, interiorcrates_mywireshelf.div2, interiorcrates_myshelf.div2, interiorshoes_mywireshelf.div2, interiorshoes_myshelf.div2, interiorwardrobe_myshelf.div2, interiorbroom_myshelf.div2);
+divider3=subscribe(0, interiorhigh_shelf.div3);
+rail1=subscribe(0, interiorwardrobe_myrail.rail1);
+rail2=subscribe(0, interiorwardrobe_myrail.rail2);
+topblende=subscribe(0, interiorhigh_shelf.topblende);
+
+drawersystem=distribute(drawerbox_novapro|11515332, drawerbox_usedrawer.object, drawerbox_fin1.col);
+gripless=subscribe(0, carcassvent_leftsidepanelexterior.gripless2,carcassvent_leftsidepanelinterior.gripless2,carcassvent_rightsidepanelexterior.gripless2, carcassvent_rightsidepanelinterior.gripless2);
+channelside=subscribe(0, carcassvent_leftsidepanelexterior.channelside,carcassvent_leftsidepanelinterior.channelside,carcassvent_rightsidepanelexterior.channelside, carcassvent_rightsidepanelinterior.channelside);
+extendedsides=subscribe(0, carcassvent_leftsidepanelexterior.extendedsides,carcassvent_leftsidepanelinterior.extendedsides,carcassvent_rightsidepanelexterior.extendedsides,carcassvent_rightsidepanelinterior.extendedsides);
+builtinparts=subscribe(11515332, interiortandem_fin2.col, interiortandemduo_fin2.col, geartandemshelfdoor_fin1.col, gearlaundrydoor_fin1.col, interiorcrates_fin2.col, interiorshoes_fin2.col, interiorlaundry_fin2.col, interiorbroom_fin2.col);
+tandem=subscribe(0, interiorhigh_shelf.tandem);
+midshelves=subscribe(0, interiorhigh_shelf.midshelves);
+ventilation=subscribe(0, carcassvent_toppanelinterior.ventilation, carcassvent_toppanelexterior.ventilation, carcassvent_backpanel.ventilation, carcassvent_backpanelrearside.ventilation);
+glass=subscribe(0, interiorhigh_shelf.glass, interiorhighauto_shelf.glass);
+usebase=subscribe(base4feet,base.object);
+lighting=subscribe(0, interiorhigh_shelf.lighting, interiorhighauto_shelf.lighting);
+
+mysetsize=setsize(0,0.6,0.56,2.035,0,0,0,0,0,0);
+RESULT=configurator(cabinet,mysetsize,b,t,h,legheight,bodyfinish,visibleside,sidefinish,interiorwhite,usefront,useinterior,shelfcnt1,shelfcnt2,divider1,divider2,divider3,drawersystem,gripless,channelside,channelfinish,extendedsides,builtinparts,tandem,midshelves,ventilation,finhdffinish,glass,usebase,rail1,rail2,topblende,lighting,frontoffset);

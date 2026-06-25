@@ -1,0 +1,100 @@
+<svg viewBox="0 0 780 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d">
+  <title id="t">Как читать карту устройства</title>
+  <desc id="d">Блоки системы разложены по четырём цветным зонам-колонкам: Клиент, Сервисы, Данные, Внешние. При наведении на блок подсвечиваются его связи: выделен блок «3D-сцена» и три линии к «Каталог», «Хранилище 3D» и «Экран / Редактор», остальное приглушено.</desc>
+  <style>
+    .panel{fill:#f6f0e4}
+    .frame{fill:none;stroke:#b3502a;stroke-width:3}
+    .frameIn{fill:none;stroke:#d8c3a0;stroke-width:1}
+    .ttl{font-family:Georgia,'Times New Roman',serif;fill:#1d1a15;font-weight:700}
+    .sub{font-family:'Segoe UI',system-ui,sans-serif;fill:#564f43}
+    .leg{font-family:'Segoe UI',sans-serif;fill:#6b5f4d}
+    .zttl{font-family:'Segoe UI',sans-serif;font-weight:700}
+
+    .cli{fill:#d8e6e6;stroke:#266b72;stroke-width:1.6}
+    .cliT{font-family:'Segoe UI',sans-serif;fill:#15454a;font-weight:600}
+    .svc{fill:#efe2cc;stroke:#9c6b32;stroke-width:1.6}
+    .svcT{font-family:'Segoe UI',sans-serif;fill:#5e4422;font-weight:600}
+    .dat{fill:#d5e8d4;stroke:#4f8a52;stroke-width:1.6}
+    .datT{font-family:'Segoe UI',sans-serif;fill:#27502a;font-weight:600}
+    .ext{fill:#e6dcf2;stroke:#7a5aa6;stroke-width:1.6}
+    .extT{font-family:'Segoe UI',sans-serif;fill:#3f2c5c;font-weight:600}
+
+    .linkDim{stroke:#a99873;stroke-width:1.6;fill:none;opacity:0.45}
+    .linkOn{stroke:#b3502a;stroke-width:2.8;fill:none}
+    .haloT{font-family:'Segoe UI',sans-serif;fill:#b3502a;font-weight:700}
+  </style>
+
+  <rect class="panel" x="8" y="8" width="764" height="384" rx="14"/>
+  <rect class="frame" x="8" y="8" width="764" height="384" rx="14"/>
+  <rect class="frameIn" x="14" y="14" width="752" height="372" rx="10"/>
+
+  <text class="ttl" x="390" y="48" font-size="22" text-anchor="middle">Как читать карту устройства</text>
+  <text class="sub" x="390" y="70" font-size="13" text-anchor="middle">наведи блок — видно его связи</text>
+
+  <!-- Zone column headers -->
+  <text class="zttl" x="135" y="104" font-size="14" text-anchor="middle" fill="#266b72">Клиент</text>
+  <text class="zttl" x="330" y="104" font-size="14" text-anchor="middle" fill="#9c6b32">Сервисы</text>
+  <text class="zttl" x="525" y="104" font-size="14" text-anchor="middle" fill="#4f8a52">Данные</text>
+  <text class="zttl" x="685" y="104" font-size="14" text-anchor="middle" fill="#7a5aa6">Внешние</text>
+
+  <!-- ===== Connections (drawn before blocks so blocks sit on top) ===== -->
+  <!-- dimmed background links between non-highlighted blocks -->
+  <!-- Каталог -> База -->
+  <path class="linkDim" d="M410 162 L445 210"/>
+  <!-- Хранилище 3D -> База -->
+  <path class="linkDim" d="M410 262 L445 228"/>
+  <!-- ИИ-модель -> База (external feeds the data store) -->
+  <path class="linkDim" d="M635 245 Q605 268 590 245"/>
+
+  <!-- highlighted links from 3D-сцена (right edge x=215) -->
+  <!-- 3D-сцена -> Экран / Редактор (same column, upward) -->
+  <path class="linkOn" d="M135 258 L135 196"/>
+  <!-- 3D-сцена -> Каталог (left edge of Каталог x=250) -->
+  <path class="linkOn" d="M215 270 L250 162"/>
+  <!-- 3D-сцена -> Хранилище 3D (left edge x=250) -->
+  <path class="linkOn" d="M215 290 L250 268"/>
+
+  <!-- halo label "связь" on the 3D-сцена -> Каталог link -->
+  <rect x="206" y="208" width="56" height="22" rx="6" fill="#f6f0e4"/>
+  <text class="haloT" x="234" y="224" font-size="12.5" text-anchor="middle">связь</text>
+
+  <!-- ===== Blocks ===== -->
+  <!-- CLIENT column -->
+  <g opacity="0.5">
+    <rect class="cli" x="55" y="150" width="160" height="46" rx="10"/>
+    <text class="cliT" x="135" y="178" font-size="13.5" text-anchor="middle">Экран / Редактор</text>
+  </g>
+
+  <!-- highlighted block: 3D-сцена -->
+  <rect x="55" y="258" width="160" height="46" rx="10" fill="#d8e6e6" stroke="#266b72" stroke-width="3.4"/>
+  <text class="cliT" x="135" y="286" font-size="13.5" text-anchor="middle">3D-сцена</text>
+
+  <!-- SERVICES column -->
+  <rect class="svc" x="250" y="135" width="160" height="46" rx="10"/>
+  <text class="svcT" x="330" y="163" font-size="13.5" text-anchor="middle">Каталог</text>
+
+  <rect class="svc" x="250" y="245" width="160" height="46" rx="10"/>
+  <text class="svcT" x="330" y="273" font-size="13.5" text-anchor="middle">Хранилище 3D</text>
+
+  <!-- DATA column -->
+  <g opacity="0.5">
+    <rect class="dat" x="445" y="195" width="160" height="46" rx="10"/>
+    <text class="datT" x="525" y="223" font-size="13.5" text-anchor="middle">База</text>
+  </g>
+
+  <!-- EXTERNAL column -->
+  <g opacity="0.5">
+    <rect class="ext" x="610" y="195" width="150" height="46" rx="10"/>
+    <text class="extT" x="685" y="223" font-size="13.5" text-anchor="middle">ИИ-модель</text>
+  </g>
+
+  <!-- ===== Legend ===== -->
+  <rect x="150" y="360" width="13" height="13" rx="3" class="cli"/>
+  <text class="leg" x="170" y="371" font-size="11.5">Клиент</text>
+  <rect x="270" y="360" width="13" height="13" rx="3" class="svc"/>
+  <text class="leg" x="290" y="371" font-size="11.5">Сервисы</text>
+  <rect x="400" y="360" width="13" height="13" rx="3" class="dat"/>
+  <text class="leg" x="420" y="371" font-size="11.5">Данные</text>
+  <rect x="515" y="360" width="13" height="13" rx="3" class="ext"/>
+  <text class="leg" x="535" y="371" font-size="11.5">Внешние</text>
+</svg>

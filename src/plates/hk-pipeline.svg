@@ -1,0 +1,103 @@
+<svg viewBox="0 0 820 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d">
+  <title id="t">Как у Häcker устроено сегодня</title>
+  <desc id="d">Сегодняшний путь данных Häcker: из IDM-каталога в редактор imos, который выдаёт 3D-формы для показа и программы ЧПУ для станков, а отдельная ветка ведёт от каталога к дилерам.</desc>
+  <style>
+    .panel{fill:#f6f0e4}
+    .frame{fill:none;stroke:#b3502a;stroke-width:3}
+    .frameIn{fill:none;stroke:#d8c3a0;stroke-width:1}
+    .ttl{font-family:Georgia,'Times New Roman',serif;fill:#1d1a15;font-weight:700}
+    .sub{font-family:'Segoe UI',system-ui,sans-serif;fill:#564f43}
+    .keep{fill:#d8e6e6;stroke:#266b72;stroke-width:1.8}
+    .rep{fill:#f3e0d2;stroke:#b3502a;stroke-width:1.8}
+    .neu{fill:#e7ddc9;stroke:#8a8270;stroke-width:1.8}
+    .boxT{font-family:Georgia,serif;font-weight:700}
+    .boxL{font-family:'Segoe UI',sans-serif}
+    .kT{fill:#15454a}.rT{fill:#7a3318}.nT{fill:#4a4538}
+    .flow{fill:none;stroke:#564f43;stroke-width:2.2}
+    .flowK{fill:none;stroke:#266b72;stroke-width:2.2}
+    .flowR{fill:none;stroke:#b3502a;stroke-width:2.2}
+    .alab{font-family:'Segoe UI',sans-serif;fill:#564f43;font-weight:600}
+    .halo{stroke:#f6f0e4;stroke-width:5;stroke-linejoin:round;paint-order:stroke}
+    .foot{font-family:'Segoe UI',sans-serif;fill:#564f43}
+    .legT{font-family:'Segoe UI',sans-serif;fill:#564f43}
+  </style>
+
+  <rect class="panel" x="8" y="8" width="804" height="464" rx="14"/>
+  <rect class="frame" x="8" y="8" width="804" height="464" rx="14"/>
+  <rect class="frameIn" x="14" y="14" width="792" height="452" rx="10"/>
+
+  <text class="ttl" x="410" y="50" font-size="23" text-anchor="middle">Как у Häcker устроено сегодня</text>
+  <text class="sub" x="410" y="72" font-size="13" text-anchor="middle">путь данных: от каталога до станков на заводе</text>
+
+  <!-- ARROW MARKERS -->
+  <defs>
+    <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0 L7 3 L0 6 z" fill="#564f43"/>
+    </marker>
+    <marker id="ahK" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0 L7 3 L0 6 z" fill="#266b72"/>
+    </marker>
+    <marker id="ahR" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0 L7 3 L0 6 z" fill="#b3502a"/>
+    </marker>
+  </defs>
+
+  <!-- ===== FLOWS (drawn before boxes; labels with halo drawn after) ===== -->
+  <!-- IDM -> imos -->
+  <path class="flow" marker-end="url(#ah)" d="M242 168 L284 168"/>
+  <!-- imos -> 3D/Navigram (up) -->
+  <path class="flowR" marker-end="url(#ahR)" d="M540 150 C586 150 586 116 616 116"/>
+  <!-- imos -> CNC/Станки (down) -->
+  <path class="flowR" marker-end="url(#ahR)" d="M540 186 C586 186 586 220 616 220"/>
+  <!-- IDM lower branch -> cat@web -->
+  <path class="flowK" marker-end="url(#ahK)" d="M168 200 L168 330 L284 330"/>
+  <!-- cat@web -> Дилеры -->
+  <path class="flowK" marker-end="url(#ahK)" d="M484 330 L616 330"/>
+
+  <!-- ===== BOXES ===== -->
+  <!-- IDM-каталог -->
+  <rect class="keep" x="92" y="132" width="150" height="72" rx="12"/>
+  <text class="boxT kT" x="167" y="164" font-size="17" text-anchor="middle">IDM-каталог</text>
+  <text class="boxL kT" x="167" y="186" font-size="12.5" text-anchor="middle">товары · цены · правила</text>
+
+  <!-- imos -->
+  <rect class="rep" x="284" y="132" width="256" height="72" rx="12"/>
+  <text class="boxT rT" x="412" y="162" font-size="17" text-anchor="middle">imos — редактор</text>
+  <text class="boxL rT" x="412" y="184" font-size="12.5" text-anchor="middle">как собран шкаф + программы станкам</text>
+
+  <!-- 3D / Navigram -->
+  <rect class="rep" x="616" y="86" width="186" height="60" rx="12"/>
+  <text class="boxT rT" x="709" y="112" font-size="15" text-anchor="middle">3D-формы → Navigram</text>
+  <text class="boxL rT" x="709" y="132" font-size="12" text-anchor="middle">склад 3D-моделей · для показа</text>
+
+  <!-- CNC / Станки -->
+  <rect class="neu" x="616" y="190" width="186" height="60" rx="12"/>
+  <text class="boxT nT" x="709" y="216" font-size="15" text-anchor="middle">CNC → Станки</text>
+  <text class="boxL nT" x="709" y="236" font-size="12" text-anchor="middle">режут детали · завод</text>
+
+  <!-- cat@web -->
+  <rect class="keep" x="284" y="300" width="200" height="60" rx="12"/>
+  <text class="boxT kT" x="384" y="326" font-size="15" text-anchor="middle">cat@web</text>
+  <text class="boxL kT" x="384" y="346" font-size="12" text-anchor="middle">витрина каталога</text>
+
+  <!-- Дилеры -->
+  <rect class="keep" x="616" y="300" width="186" height="60" rx="12"/>
+  <text class="boxT kT" x="709" y="326" font-size="15" text-anchor="middle">Дилеры (CARAT/KPS)</text>
+  <text class="boxL kT" x="709" y="346" font-size="12" text-anchor="middle">продажи</text>
+
+  <!-- ===== ARROW LABELS (halo) ===== -->
+  <text class="alab halo" x="263" y="160" font-size="11.5" text-anchor="middle">данные</text>
+  <text class="alab halo" x="585" y="104" font-size="11.5" text-anchor="middle">показ</text>
+  <text class="alab halo" x="585" y="208" font-size="11.5" text-anchor="middle">завод</text>
+
+  <!-- ===== LEGEND ===== -->
+  <rect class="keep" x="92" y="404" width="16" height="16" rx="3"/>
+  <text class="legT" x="116" y="417" font-size="12">оставляем</text>
+  <rect class="rep" x="214" y="404" width="16" height="16" rx="3"/>
+  <text class="legT" x="238" y="417" font-size="12">заменяем</text>
+  <rect class="neu" x="332" y="404" width="16" height="16" rx="3"/>
+  <text class="legT" x="356" y="417" font-size="12">станки</text>
+
+  <!-- ===== FOOTER ===== -->
+  <text class="foot" x="410" y="452" font-size="12.5" text-anchor="middle">Зачем ЧПУ: настроенная кухня превращается в реальные детали — их режут станки по программам из imos.</text>
+</svg>

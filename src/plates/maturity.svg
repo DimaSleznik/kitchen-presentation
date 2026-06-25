@@ -1,0 +1,67 @@
+<svg viewBox="0 0 780 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d">
+  <title id="t">Зрелость кода и риски — простыми словами</title>
+  <desc id="d">Список из четырёх рисков с пометкой серьёзности и тем, как каждый снимается по ходу работы; внизу вывод, что чистка идёт в каждой фазе, а не отдельным месяцем.</desc>
+  <style>
+    .panel{fill:#f6f0e4}
+    .frame{fill:none;stroke:#b3502a;stroke-width:3}
+    .frameIn{fill:none;stroke:#d8c3a0;stroke-width:1}
+    .ttl{font-family:Georgia,'Times New Roman',serif;fill:#1d1a15;font-weight:700}
+    .sub{font-family:'Segoe UI',system-ui,sans-serif;fill:#564f43}
+    .row{fill:#efe7d5;stroke:#caa24a;stroke-width:1.2}
+    .risk{font-family:'Segoe UI',sans-serif;fill:#1d1a15;font-weight:700}
+    .fix{font-family:'Segoe UI',sans-serif;fill:#27502a}
+    .leg{font-family:'Segoe UI',sans-serif;fill:#564f43}
+    .out{fill:#f3e0d2;stroke:#b3502a;stroke-width:2}
+    .outT{font-family:Georgia,serif;fill:#6b4a36;font-weight:700}
+    .div{stroke:#d8c3a0;stroke-width:1}
+  </style>
+
+  <rect class="panel" x="8" y="8" width="764" height="414" rx="14"/>
+  <rect class="frame" x="8" y="8" width="764" height="414" rx="14"/>
+  <rect class="frameIn" x="14" y="14" width="752" height="402" rx="10"/>
+
+  <text class="ttl" x="390" y="46" font-size="22" text-anchor="middle">Зрелость кода и риски — простыми словами</text>
+  <text class="sub" x="390" y="68" font-size="13" text-anchor="middle">каждая фаза оставляет код чище, чем взяла</text>
+
+  <!-- row 1 -->
+  <rect class="row" x="40" y="86" width="700" height="58" rx="9"/>
+  <circle cx="68" cy="115" r="8" fill="#b5503e"/>
+  <text class="risk" x="92" y="120" font-size="15">Каталог жёстко зашит в коде</text>
+  <line class="div" x1="408" y1="98" x2="408" y2="132"/>
+  <text class="fix" x="424" y="111" font-size="13">даём гибкость — лечим в корне:</text>
+  <text class="fix" x="424" y="130" font-size="13" font-weight="700">фаза «Движок шаблонов»</text>
+
+  <!-- row 2 -->
+  <rect class="row" x="40" y="154" width="700" height="58" rx="9"/>
+  <circle cx="68" cy="183" r="8" fill="#b5503e"/>
+  <text class="risk" x="92" y="188" font-size="15">Подтормаживания при переключениях</text>
+  <line class="div" x1="408" y1="166" x2="408" y2="200"/>
+  <text class="fix" x="424" y="179" font-size="13">лечим в корне:</text>
+  <text class="fix" x="424" y="198" font-size="13" font-weight="700">общая палитра материалов</text>
+
+  <!-- row 3 -->
+  <rect class="row" x="40" y="222" width="700" height="58" rx="9"/>
+  <circle cx="68" cy="251" r="8" fill="#c0892e"/>
+  <text class="risk" x="92" y="256" font-size="15">Большие куски кода без авто-проверок</text>
+  <line class="div" x1="408" y1="234" x2="408" y2="268"/>
+  <text class="fix" x="424" y="247" font-size="13">покрываем заранее:</text>
+  <text class="fix" x="424" y="266" font-size="13" font-weight="700">тесты ещё до правок</text>
+
+  <!-- row 4 -->
+  <rect class="row" x="40" y="290" width="700" height="58" rx="9"/>
+  <circle cx="68" cy="319" r="8" fill="#c0892e"/>
+  <text class="risk" x="92" y="324" font-size="15">Хрупкие тесты ломаются от мелочей</text>
+  <line class="div" x1="408" y1="302" x2="408" y2="336"/>
+  <text class="fix" x="424" y="315" font-size="13">делаем устойчивыми:</text>
+  <text class="fix" x="424" y="334" font-size="13" font-weight="700">фабрики данных вместо ручных списков</text>
+
+  <!-- legend -->
+  <circle cx="52" cy="372" r="7" fill="#b5503e"/>
+  <text class="leg" x="66" y="377" font-size="12.5">высокая</text>
+  <circle cx="152" cy="372" r="7" fill="#c0892e"/>
+  <text class="leg" x="166" y="377" font-size="12.5">средняя</text>
+
+  <!-- conclusion -->
+  <rect class="out" x="40" y="388" width="700" height="26" rx="8"/>
+  <text class="outT" x="390" y="406" font-size="13.5" text-anchor="middle">Не отдельный «месяц на долги» — чистим по ходу каждой фазы</text>
+</svg>

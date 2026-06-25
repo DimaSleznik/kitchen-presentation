@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.DS_Store
+*.log
+
+# Large source exports — not needed for the site
+HK/*.xml
