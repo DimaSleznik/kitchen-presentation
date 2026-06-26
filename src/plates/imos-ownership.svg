@@ -1,0 +1,58 @@
+<svg viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d">
+  <title id="t">Движок — поставщика, данные — ваши</title>
+  <desc id="d">Программа imos принадлежит поставщику и забрать её нельзя, но каталог, рецепты, материалы и сохранённые результаты принадлежат Häcker, и их обязаны отдать при выходе — поэтому полный прогон оформляем как условие выхода.</desc>
+  <style>
+    .panel{fill:#f6f0e4}
+    .frame{fill:none;stroke:#b3502a;stroke-width:3}
+    .frameIn{fill:none;stroke:#d8c3a0;stroke-width:1}
+    .ttl{font-family:Georgia,'Times New Roman',serif;fill:#1d1a15;font-weight:700}
+    .sub{font-family:'Segoe UI',system-ui,sans-serif;fill:#564f43}
+    .old{fill:#e7ddc9;stroke:#8a8270;stroke-width:1.8}
+    .oldT{font-family:Georgia,serif;fill:#4a4536;font-weight:700}
+    .oldL{font-family:'Segoe UI',sans-serif;fill:#6b6552}
+    .new{fill:#d8e6e6;stroke:#266b72;stroke-width:1.8}
+    .newT{font-family:Georgia,serif;fill:#15454a;font-weight:700}
+    .newL{font-family:'Segoe UI',sans-serif;fill:#1c5258}
+    .tagNo{fill:#8a8270}
+    .tagYes{fill:#266b72}
+    .tagTxt{font-family:'Segoe UI',sans-serif;fill:#f6f0e4;font-weight:700}
+    .bannerTxt{font-family:'Segoe UI',sans-serif;fill:#f6f0e4;font-weight:700}
+  </style>
+
+  <rect class="panel" x="8" y="8" width="744" height="344" rx="14"/>
+  <rect class="frame" x="8" y="8" width="744" height="344" rx="14"/>
+  <rect class="frameIn" x="14" y="14" width="732" height="332" rx="10"/>
+
+  <text class="ttl" x="380" y="46" font-size="22" text-anchor="middle">Движок — поставщика, данные — ваши</text>
+  <text class="sub" x="380" y="70" font-size="13" text-anchor="middle">программу забрать нельзя — данные обязаны отдать при выходе</text>
+
+  <!-- ===== ЛЕВО: программа imos (поставщика) ===== -->
+  <rect class="old" x="46" y="96" width="300" height="150" rx="12"/>
+  <!-- замок -->
+  <path d="M188 130 v-8 a8 8 0 0 1 16 0 v8" fill="none" stroke="#6b6552" stroke-width="2.4"/>
+  <rect x="182" y="130" width="28" height="22" rx="3" fill="#f6f0e4" stroke="#6b6552" stroke-width="2"/>
+  <circle cx="196" cy="140" r="2.6" fill="#6b6552"/>
+  <text class="oldT" x="196" y="184" font-size="18" text-anchor="middle">Программа imos</text>
+  <text class="oldL" x="196" y="205" font-size="12.5" text-anchor="middle">движок-вычислитель</text>
+  <rect class="tagNo" x="120" y="216" width="152" height="24" rx="12"/>
+  <text class="tagTxt" x="196" y="233" font-size="12.5" text-anchor="middle">забрать нельзя</text>
+
+  <!-- ===== ПРАВО: ваши данные (Häcker) ===== -->
+  <rect class="new" x="414" y="96" width="300" height="150" rx="12"/>
+  <text class="newT" x="564" y="124" font-size="18" text-anchor="middle">Ваши данные</text>
+  <text class="newL" x="438" y="148" font-size="12.5" text-anchor="start">· каталог, цены, правила</text>
+  <text class="newL" x="438" y="168" font-size="12.5" text-anchor="start">· рецепты сборки</text>
+  <text class="newL" x="438" y="188" font-size="12.5" text-anchor="start">· материалы и отделки</text>
+  <text class="newL" x="438" y="208" font-size="12.5" text-anchor="start">· сохранённые результаты расчётов</text>
+  <rect class="tagYes" x="438" y="216" width="252" height="24" rx="12"/>
+  <text class="tagTxt" x="564" y="233" font-size="12.5" text-anchor="middle">обязаны отдать при выходе</text>
+
+  <!-- центральный маркер контраста -->
+  <circle cx="380" cy="171" r="22" fill="#f3e0d2" stroke="#b3502a" stroke-width="2.4"/>
+  <text x="380" y="179" font-size="20" text-anchor="middle" font-family="Georgia,serif" fill="#b3502a" font-weight="700">≠</text>
+
+  <!-- ===== БАННЕР: условие выхода ===== -->
+  <rect x="46" y="272" width="668" height="50" rx="12" fill="#b3502a"/>
+  <text class="bannerTxt" x="380" y="293" font-size="14" text-anchor="middle">Условие выхода: один полный прогон каталога</text>
+  <text class="bannerTxt" x="380" y="312" font-size="14" text-anchor="middle">+ выгрузка всех ваших данных</text>
+</svg>
