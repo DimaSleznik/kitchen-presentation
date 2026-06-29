@@ -5,6 +5,7 @@ import 'highlight.js/styles/base16/atelier-cave.css';
 import '@fontsource-variable/fraunces';
 import '@fontsource-variable/hanken-grotesk';
 import '@fontsource-variable/jetbrains-mono';
+import { getLang, setLang, t } from './i18n.js';
 import { mountBoard } from './board.js';
 import { mountPhases } from './phases.js';
 import { mountArch } from './arch.js';
@@ -243,6 +244,28 @@ function route() {
   }
 }
 window.addEventListener('hashchange', route);
+
+/* ── i18n: переключатель языка + перевод навигации ── */
+function applyNavI18n() {
+  document.querySelectorAll('[data-i18n]').forEach((el) => { el.textContent = t(el.getAttribute('data-i18n')); });
+  document.querySelectorAll('#lang-switch button').forEach((b) => {
+    b.classList.toggle('on', b.dataset.lang === getLang());
+  });
+}
+const langSwitch = document.getElementById('lang-switch');
+if (langSwitch) {
+  langSwitch.addEventListener('click', (e) => {
+    const b = e.target.closest('button[data-lang]');
+    if (b) setLang(b.dataset.lang);
+  });
+}
+window.addEventListener('kp-langchange', () => {
+  // полная перезагрузка — язык читается из localStorage, вью восстанавливается из hash;
+  // надёжнее точечного перемонтажа (нет дублей слушателей и утечек panzoom на доске).
+  location.reload();
+});
+document.documentElement.setAttribute('lang', getLang());
+applyNavI18n();
 
 /* ── scroll reveal (robust: IO + in-view kick + safety net) ── */
 const reveal = (el) => el.classList.add('in');

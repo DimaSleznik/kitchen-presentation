@@ -9,6 +9,7 @@
 
 import panzoom from 'panzoom';
 import { plate } from './plates.js';
+import { t as L, trTask, trIter, trLane, trParking } from './i18n.js';
 
 export const LANES = [
   { id: 'design', label: 'Дизайн / UX', icon: '◐' },
@@ -217,59 +218,55 @@ export function mountBoard(root) {
   const cols = ITERATIONS.length;
   const html = [];
   html.push(`<div class="board-intro">
-    <h1>План работ — что делаем и в каком порядке</h1>
-    <p>Слева направо — <b>фазы</b> проекта. Строки — <b>роли</b> команды. Карточки в одной колонке выполняются
-       <b>параллельно</b>; значок <span class="stopper-key">⛔</span> и стрелки — <b>зависимости</b> (стоперы:
-       сначала одно, затем другое). Внизу каждой фазы — <b>результат фазы</b>.
-       <br>Наведите на карточку для краткой подсказки; нажмите — для подробного описания и ссылки на документ.
-       <br><b>Полный горизонт</b> — около года (≈ 54 недели) силами небольшой команды; самое продолжительное и рисковое — перенос геометрии и команд для станков (ЧПУ).</p>
-    <div data-plate="read-board" data-caption="Как читать эту доску"></div>
+    <h1>${L('board.intro.h1')}</h1>
+    <p>${L('board.intro.p')}</p>
+    <div data-plate="read-board" data-caption="${L('board.intro.plateCaption')}"></div>
     <div class="board-toolbar">
-      <span class="tb-label">Стрелки-зависимости</span>
-      <div class="seg"><button class="tb-seg" data-mode="select">при выборе</button><button class="tb-seg" data-mode="always">всегда</button></div>
-      <span class="tb-label" style="margin-left:10px">Масштаб</span>
-      <div class="seg"><button class="zoom-btn" data-z="out" title="отдалить">−</button><button class="zoom-btn" data-z="in" title="приблизить">+</button></div>
-      <button class="zoom-btn fitbtn" data-z="fit" title="показать все фазы">уместить всё</button>
-      <span class="tb-hint">тащи — двигать · колесо — масштаб</span>
+      <span class="tb-label">${L('board.toolbar.depsLabel')}</span>
+      <div class="seg"><button class="tb-seg" data-mode="select">${L('board.toolbar.select')}</button><button class="tb-seg" data-mode="always">${L('board.toolbar.always')}</button></div>
+      <span class="tb-label" style="margin-left:10px">${L('board.toolbar.zoom')}</span>
+      <div class="seg"><button class="zoom-btn" data-z="out" title="−">−</button><button class="zoom-btn" data-z="in" title="+">+</button></div>
+      <button class="zoom-btn fitbtn" data-z="fit">${L('board.toolbar.fit')}</button>
+      <span class="tb-hint">${L('board.toolbar.hint')}</span>
     </div>
   </div>`);
 
   html.push(`<div class="board-scroll"><div class="board-grid" style="grid-template-columns:200px repeat(${cols},300px)">`);
 
-  html.push(`<div class="g-corner">роли&nbsp;\\&nbsp;фазы</div>`);
+  html.push(`<div class="g-corner">${L('board.corner')}</div>`);
   ITERATIONS.forEach((it) => {
     html.push(`<div class="g-head${it.demo ? ' demo' : ''}">
-      <div class="ih-top"><span class="ih-name">${it.name}</span><span class="ih-weeks">${it.weeks}</span></div>
-      <div class="ih-sub">${it.sub}</div>
-      <div class="ih-why">${it.why}</div>
+      <div class="ih-top"><span class="ih-name">${trIter(it, 'name')}</span><span class="ih-weeks">${trIter(it, 'weeks')}</span></div>
+      <div class="ih-sub">${trIter(it, 'sub')}</div>
+      <div class="ih-why">${trIter(it, 'why')}</div>
     </div>`);
   });
 
   LANES.forEach((lane) => {
-    html.push(`<div class="g-lane"><span class="gl-icon">${lane.icon}</span>${lane.label}</div>`);
+    html.push(`<div class="g-lane"><span class="gl-icon">${lane.icon}</span>${trLane(lane)}</div>`);
     ITERATIONS.forEach((it) => {
       const tasks = TASKS.filter((t) => t.lane === lane.id && t.iter === it.id);
       const cell = tasks.map((t) => `
-        <button class="task" data-task="${t.id}" data-lane="${lane.id}" title="${(t.hook || '').replace(/"/g, '&quot;')}">
-          ${t.deps ? '<span class="t-stop" title="есть зависимость">⛔</span>' : ''}
-          <span class="t-title">${t.title}</span>
+        <button class="task" data-task="${t.id}" data-lane="${lane.id}" title="${(trTask(t, 'hook') || '').replace(/"/g, '&quot;')}">
+          ${t.deps ? '<span class="t-stop">⛔</span>' : ''}
+          <span class="t-title">${trTask(t, 'title')}</span>
         </button>`).join('');
       html.push(`<div class="g-cell" data-iter="${it.id}" data-lane="${lane.id}">${cell}</div>`);
     });
   });
 
-  html.push(`<div class="g-lane out"><span class="gl-icon">★</span>Результат</div>`);
+  html.push(`<div class="g-lane out"><span class="gl-icon">★</span>${L('board.lane.result')}</div>`);
   ITERATIONS.forEach((it) => {
     html.push(`<div class="g-out${it.demo ? ' demo' : ''}">
-      ${it.demo ? '<span class="demo-badge">★ демонстрация</span>' : '<span class="demo-badge muted">подготовка</span>'}
-      <div class="out-text">${it.output}</div>
+      ${it.demo ? `<span class="demo-badge">${L('board.badge.demo')}</span>` : `<span class="demo-badge muted">${L('board.badge.internal')}</span>`}
+      <div class="out-text">${trIter(it, 'output')}</div>
     </div>`);
   });
 
   html.push(`<svg class="dep-layer" aria-hidden="true"></svg></div></div>`);
 
-  html.push(`<div class="parking"><h2>За горизонтом (на потом)</h2><div class="park-cards">${
-    PARKING.map((p) => `<button class="park" data-doc="${p.doc}"><b>${p.title}</b><span>${p.note}</span></button>`).join('')
+  html.push(`<div class="parking"><h2>${L('board.parking.h2')}</h2><div class="park-cards">${
+    PARKING.map((p, i) => `<button class="park" data-doc="${p.doc}"><b>${trParking(i, 'title', p.title)}</b><span>${trParking(i, 'note', p.note)}</span></button>`).join('')
   }</div></div>`);
 
   root.innerHTML = html.join('');
@@ -289,18 +286,18 @@ export function mountBoard(root) {
     const it = ITERATIONS.find((i) => i.id === t.iter);
     const deps = (t.deps || []).map(byId).filter(Boolean);
     drawer.innerHTML = `
-      <button class="dr-close" aria-label="закрыть">✕</button>
-      <div class="dr-tags"><span class="dr-lane">${lane.icon} ${lane.label}</span><span class="dr-iter">${it.name} · ${it.weeks}</span></div>
-      <h3>${t.title}</h3>
-      ${t.hook ? `<p class="dr-hook">${t.hook}</p>` : ''}
-      <p class="dr-note">${t.plain || t.note}</p>
+      <button class="dr-close" aria-label="${L('board.drawer.close')}">✕</button>
+      <div class="dr-tags"><span class="dr-lane">${lane.icon} ${trLane(lane)}</span><span class="dr-iter">${trIter(it, 'name')} · ${trIter(it, 'weeks')}</span></div>
+      <h3>${trTask(t, 'title')}</h3>
+      ${t.hook ? `<p class="dr-hook">${trTask(t, 'hook')}</p>` : ''}
+      <p class="dr-note">${trTask(t, 'plain') || trTask(t, 'note')}</p>
       ${t.plate ? `<div class="dr-plate">${plate(t.plate)}</div>` : ''}
-      ${deps.length ? `<div class="dr-deps"><span class="dr-deps-h">⛔ Сначала нужно закрыть:</span>${
-        deps.map((d) => `<button class="dr-dep" data-task="${d.id}">${d.title}</button>`).join('')
+      ${deps.length ? `<div class="dr-deps"><span class="dr-deps-h">${L('board.drawer.deps')}</span>${
+        deps.map((d) => `<button class="dr-dep" data-task="${d.id}">${trTask(d, 'title')}</button>`).join('')
       }</div>` : ''}
-      <div class="dr-demo${it.demo ? '' : ' muted'}"><span class="dr-h">${it.demo ? 'Демонстрируемый результат фазы' : 'Результат фазы'}</span>${it.output}</div>
-      ${t.note ? `<div class="dr-block"><span class="dr-h">Детали (для технарей)</span><p>${t.note}</p></div>` : ''}
-      ${t.doc ? `<a class="dr-doc" href="#/doc/${t.doc}">Открыть подробный документ →</a>` : ''}`;
+      <div class="dr-demo${it.demo ? '' : ' muted'}"><span class="dr-h">${it.demo ? L('board.drawer.demoResult') : L('board.drawer.result')}</span>${trIter(it, 'output')}</div>
+      ${t.note ? `<div class="dr-block"><span class="dr-h">${L('board.drawer.details')}</span><p>${trTask(t, 'note')}</p></div>` : ''}
+      ${t.doc ? `<a class="dr-doc" href="#/doc/${t.doc}">${L('board.drawer.doc')}</a>` : ''}`;
     drawer.hidden = false;
     drawer.classList.add('open');
     highlightChain(id);
