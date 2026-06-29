@@ -6,6 +6,7 @@ import '@fontsource-variable/fraunces';
 import '@fontsource-variable/hanken-grotesk';
 import '@fontsource-variable/jetbrains-mono';
 import { mountBoard } from './board.js';
+import { mountPhases } from './phases.js';
 import { mountArch } from './arch.js';
 import { mountMigration } from './migration.js';
 import { mountPipeline } from './pipeline.js';
@@ -86,13 +87,14 @@ marked.setOptions({ renderer, gfm: true, breaks: false });
 /* ── views ── */
 const presentation = document.getElementById('presentation');
 const boardView = document.getElementById('board-view');
+const phasesView = document.getElementById('phases-view');
 const archView = document.getElementById('arch-view');
 const migrationView = document.getElementById('migration-view');
 const docsView = document.getElementById('docs-view');
 const docView = document.getElementById('doc-view');
 const docContent = document.getElementById('doc-content');
 
-const ALL_VIEWS = [presentation, boardView, archView, migrationView, docsView, docView];
+const ALL_VIEWS = [presentation, boardView, phasesView, archView, migrationView, docsView, docView];
 function showOnly(view) {
   ALL_VIEWS.forEach((v) => { if (v) v.hidden = v !== view; });
 }
@@ -198,6 +200,14 @@ function showBoard() {
   requestAnimationFrame(() => boardView._drawDeps && boardView._drawDeps());
 }
 
+function showPhases() {
+  showOnly(phasesView);
+  mountPhases(phasesView);
+  window.scrollTo(0, 0);
+  observeReveals();
+  kickReveal();
+}
+
 function showArch() {
   showOnly(archView);
   mountArch(archView);
@@ -220,6 +230,8 @@ function route() {
     showDoc(decodeURIComponent(name), frag ? decodeURIComponent(frag) : null);
   } else if (h.startsWith('#/board')) {
     showBoard();
+  } else if (h.startsWith('#/phases')) {
+    showPhases();
   } else if (h.startsWith('#/arch')) {
     showArch();
   } else if (h.startsWith('#/migration')) {

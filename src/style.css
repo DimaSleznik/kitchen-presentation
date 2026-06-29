@@ -113,6 +113,51 @@ svg{display:block;max-width:100%;height:auto}
 .doc .n{font-family:"JetBrains Mono Variable",monospace;font-size:11.5px;color:var(--accent)}
 .doc h3{font-size:18px;margin:6px 0 4px}.doc p{margin:0;color:var(--ink-soft);font-size:14px}
 
+/* ── PHASES (Фазы) — вертикальная лента карточек-фаз ── */
+#phases-view{padding:40px 0 90px}
+.ph-head{padding:20px 0 26px;margin-bottom:34px;border-bottom:1px solid var(--line)}
+.ph-head h1{font-size:clamp(30px,5vw,54px);font-weight:900;max-width:19ch;margin-top:14px}
+.ph-head h1 em{font-style:italic;color:var(--accent);font-weight:600}
+.ph-head .lede{font-size:clamp(17px,2vw,21px);color:var(--ink-soft);max-width:66ch;margin-top:18px}
+.ph-head .lede b{color:var(--ink)}
+
+.ph-list{display:flex;flex-direction:column;gap:30px}
+.ph-card{display:grid;grid-template-columns:252px 1fr;background:var(--card);
+  border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden}
+.ph-rail{background:var(--accent-2);color:#f6ede2;padding:26px 24px;display:flex;flex-direction:column}
+.ph-card.demo .ph-rail{background:var(--accent)}
+.ph-num{font-family:"Fraunces Variable",serif;font-weight:900;font-size:66px;line-height:.76;color:#f7efe4}
+.ph-railband{margin-top:14px}
+.ph-title{font-family:"Fraunces Variable",serif;font-weight:600;font-size:27px;color:#fff;line-height:1.04;letter-spacing:-.01em}
+.ph-weeks{display:block;font-family:"JetBrains Mono Variable",monospace;font-size:11.5px;letter-spacing:.07em;margin-top:9px;color:rgba(255,255,255,.74)}
+.ph-why{font-size:14px;line-height:1.5;color:rgba(255,255,255,.88);margin:14px 0 0}
+.ph-flag{margin-top:auto;padding-top:22px;font-family:"JetBrains Mono Variable",monospace;
+  font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.94)}
+
+.ph-main{padding:24px 26px;min-width:0}
+.ph-subh{font-family:"JetBrains Mono Variable",monospace;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-faint);margin:0 0 14px}
+.ph-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ph-mini{border:1px solid var(--line);background:var(--paper);padding:13px 15px}
+.ph-mini-role{display:flex;align-items:center;gap:7px;font-family:"JetBrains Mono Variable",monospace;
+  font-size:11px;letter-spacing:.03em;color:var(--accent-2)}
+.ph-ic{font-size:13px}
+.ph-mini b{display:block;font-weight:700;font-size:15px;margin:7px 0 4px;line-height:1.2;color:var(--ink)}
+.ph-mini-blurb{display:block;font-size:13px;color:var(--ink-faint);line-height:1.45}
+.ph-out{margin-top:20px;background:#f1e2d3;border:1px solid var(--line);
+  border-top:2px solid var(--accent);padding:15px 18px}
+.ph-card:not(.demo) .ph-out{background:#efe6d2;border-top-color:var(--accent-2)}
+.ph-out-label{display:block;font-family:"JetBrains Mono Variable",monospace;font-size:12px;
+  letter-spacing:.05em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:8px}
+.ph-card:not(.demo) .ph-out-label{color:var(--accent-2)}
+.ph-out p{margin:0;font-size:16px;line-height:1.55;color:var(--ink)}
+.ph-foot{margin-top:36px;font-family:"JetBrains Mono Variable",monospace;font-size:12.5px;
+  color:var(--ink-faint);text-align:center}
+.ph-foot a{color:var(--accent)}
+
+@media(max-width:1000px){.ph-grid{grid-template-columns:1fr}}
+@media(max-width:680px){.ph-card{grid-template-columns:1fr}.ph-flag{padding-top:14px}}
+
 footer{padding:44px 0 70px;color:var(--ink-faint);font-size:14px}
 footer b{color:var(--ink-soft)}
 
