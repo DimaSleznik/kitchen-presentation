@@ -177,19 +177,44 @@ svg{display:block;max-width:100%;height:auto}
 .ph-exp-btn:active{transform:translateY(1px)}
 @media(max-width:560px){.ph-headtop{flex-direction:column;align-items:flex-start}}
 
-/* ── PRINT → PDF (экспорт страницы «Фазы») ── */
+/* ── PRINT → PDF (экспорт страницы «Фазы»): одна фаза на альбомную страницу ── */
 @media print{
+  @page{size:A4 landscape;margin:10mm}
   nav, footer, .ph-export, .ph-foot{display:none !important}
   body{background:#fff !important}
   body::before{display:none !important}
+  html,body{height:auto !important}
   #phases-view{padding:0 !important}
-  .ph-head{border:none;padding:0 0 10px}
-  .ph-wrap{padding:0}
-  .wrap{max-width:none}
-  .reveal{opacity:1 !important;transform:none !important;transition:none !important}
-  .ph-card{break-inside:avoid;page-break-inside:avoid;box-shadow:none;border:1px solid #b8ae98;margin-bottom:12px}
-  .ph-card,.ph-rail,.ph-out{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  @page{margin:14mm}
+  .wrap,.ph-wrap{max-width:none !important;padding:0 !important}
+  .reveal{opacity:1 !important;transform:none !important;transition:none !important;transition-delay:0s !important}
+
+  /* титульная страница */
+  .ph-head{break-after:page;page-break-after:always;border:none;padding:0}
+  .ph-head h1{font-size:34px}
+  .ph-head .lede{font-size:15px}
+
+  /* каждая карточка-фаза — на своей странице */
+  .ph-list{display:block !important}
+  .ph-card{
+    break-inside:avoid;page-break-inside:avoid;
+    break-after:page;page-break-after:always;
+    box-shadow:none !important;border:1px solid #b8ae98;
+    margin:0 !important;width:100%;
+    grid-template-columns:228px 1fr !important;
+  }
+  .ph-card:last-child{break-after:auto;page-break-after:auto}
+  .ph-rail{padding:18px 16px}
+  .ph-num{font-size:48px}
+  .ph-title{font-size:23px}
+  .ph-main{padding:16px 18px}
+  .ph-grid{grid-template-columns:1fr 1fr !important;gap:8px !important}
+  .ph-mini{padding:9px 11px}
+  .ph-mini b{font-size:13px;margin:5px 0 3px}
+  .ph-mini-blurb{font-size:11px;line-height:1.4}
+  .ph-out{margin-top:14px;padding:12px 15px}
+  .ph-out p{font-size:12.5px;line-height:1.45}
+
+  .ph-card,.ph-rail,.ph-out,.ph-num,.ph-title,.ph-weeks,.ph-why,.ph-flag{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 
 footer{padding:44px 0 70px;color:var(--ink-faint);font-size:14px}
